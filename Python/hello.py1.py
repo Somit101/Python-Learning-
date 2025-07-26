@@ -430,8 +430,82 @@ def him():
 him()
 
 # sorted()
-F =sorted(mylist, key = lambda a:a,reverse = True )
+F = sorted(mylist, key = lambda a:a,reverse = True )
 print(F)
 
+                                                # OOP
+# __init__
+class person:
+      def __init__ (self,name,age):
+            self.name = name
+            self.age = age 
+      def __str__(self):
+            return f"Name = {self.name}\nAge = {self.age}"     
+p1 = person("Somit",19)
+print(p1.name)
+print(p1.age)                                                            
 
+# __str__
+class new:
+      def __init__(me,dog,cat):
+            me.dog = dog
+            me.cat = cat 
+      def __str__(me):
+            return f"{me.dog} and {me.cat}"      
+p2 = new("Duggu","mew")
+p2.cat = "meow"
+print(p2)      
 
+# Inheritence
+class Students(person):
+      pass
+S = Students("somit","18")
+print(S.name)
+
+class Students1(person):
+      def __init__(self,age):
+            self.age = age
+S1 = Students1("19")
+print(S1.age)
+
+class Students2(person):
+      def __init__(self,name,age):
+            person.__init__(self,name,age)
+S2 = Students2("Rahul","19")
+print(S2.name)  
+print(S2.age)          
+
+class Students2(person):
+      def __init__(self,name,age):
+            super().__init__(name,age)
+S2 = Students2("Rahul","19")
+print(S2.name)  
+print(S2.age)
+
+#Iterator
+class Mynum:
+      def __iter__(self):
+            self.a = 1
+            return self
+      def __next__(self):
+            x = self.a
+            if x<20:
+               self.a +=1
+               return x
+            else:
+                  raise StopIteration
+myclass = Mynum()
+myiter = iter(myclass)
+print(next(myiter))
+print(next(myiter)) 
+print(next(myiter))     
+
+def Somit():
+      x = "Somit"
+      def Goat():
+            nonlocal x
+            x = "Happy"
+            
+      Goat()
+      return x
+print(Somit())
