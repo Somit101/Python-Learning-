@@ -1,5 +1,5 @@
-x=int(input(("enter first number")))
-y=int(input(("enter second number")))
+x=int(input(("enter first number: ")))
+y=int(input(("enter second number: ")))
 print("Sum", x + y)
 print("Difference", x - y)
 print("Product", x * y)
@@ -11,7 +11,7 @@ else:
 
 
 #BMI
-W = float(input("Enter your weight (Kg)"))
-H = float(input("Enter your height (m)"))
+W = float(input("Enter your weight (Kg): "))
+H = float(input("Enter your height (m): "))
 G = H * H
 print("Your BMI", W / G)

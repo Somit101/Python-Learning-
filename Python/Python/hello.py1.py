@@ -439,6 +439,8 @@ class person:
       def __init__ (self,name,age):
             self.name = name
             self.age = age 
+      def __str__(self):
+            return f"Name = {self.name}\nAge = {self.age}"     
 p1 = person("Somit",19)
 print(p1.name)
 print(p1.age)                                                            
@@ -454,5 +456,147 @@ p2 = new("Duggu","mew")
 p2.cat = "meow"
 print(p2)      
 
+# Inheritence
+class Students(person):
+      pass
+S = Students("somit","18")
+print(S.name)
 
+class Students1(person):
+      def __init__(self,age):
+            self.age = age
+S1 = Students1("19")
+print(S1.age)
+
+class Students2(person):
+      def __init__(self,name,age):
+            person.__init__(self,name,age)
+S2 = Students2("Rahul","19")
+print(S2.name)  
+print(S2.age)          
+
+class Students2(person):
+      def __init__(self,name,age):
+            super().__init__(name,age)
+S2 = Students2("Rahul","19")
+print(S2.name)  
+print(S2.age)
+
+#Iterator
+class Mynum:
+      def __iter__(self):
+            self.a = 1
+            return self
+      def __next__(self):
+            x = self.a
+            if x<20:
+               self.a +=1
+               return x
+            else:
+                  raise StopIteration
+myclass = Mynum()
+myiter = iter(myclass)
+print(next(myiter))
+print(next(myiter)) 
+print(next(myiter))     
+
+def Somit():
+      x = "Somit"
+      def Goat():
+            nonlocal x
+            x = "Happy"
+            
+      Goat()
+      return x
+print(Somit())
+
+# Modules
+import P1
+print(dir(P1))
+
+from P12 import menu
+print(menu)
+
+# Datetime
+import datetime
+b = datetime.datetime.now()
+print(b.year)
+print(b.hour)
+print(b.month)
+print(b.day)
+print(b.fold)
+print(b.strftime("%A"))
+print(b.strftime("%B"))
+print(b.strftime("%a"))
+
+v = datetime.datetime(2025,12,8)
+print(v)
+
+
+# Math module
+y = pow(4,5)               
+print(y)
+
+Y = abs(-69.4)
+print(Y)
+
+import math
+v = math.sqrt(4)
+print(v)
+
+Z = math.ceil(2.3)
+Z1 = math.floor(2.3)
+print(Z)
+print(Z1)
+
+Y1 = math.pi
+print(Y1)
+
+# JSON
+import json
+# From json to python
+mydict = '{"Name":"Somit","Age":"19","Class":"12"}'
+x = json.loads(mydict)
+print(x)
+
+# From python to json
+thisdict = {"Name":"Bante","Age":"20","Class":"13"}
+y = json.dumps(thisdict,indent = 4,sort_keys=True)
+print(y)
+print(y[0])
+                                                     # Save data to a file with .json extention then to read that data use the normal filehandling to load or dump data 
+
+# Reg Ex (This is used to search patterns)
+import re
+txt = "I will be the best of all time"
+# To search if txt starts with I and ends with time
+data = re.search("^I.*time$",txt)
+if data:
+    print("Found successfully")
+else:
+    print("Not found")    
+
+find = re.findall("i",txt)  # Returns a list of 
+print(find)
+
+# SQLITE3
+import sqlite3
+con = sqlite3.connect("sqlite.db")
+
+c = con.cursor()
+c.execute("""CREATE TABLE may(
+            First text,
+            Last text,
+            pay integer)""")
+
+c.execute("INSERT INTO may VALUES('Somit','Pandey',900)")
+
+con.commit()
+
+c.execute("SELECT * FROM may where first='Somit'")
+
+print(c.fetchall())
+
+con.commit()
+con.close()
 

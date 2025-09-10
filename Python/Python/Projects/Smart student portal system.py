@@ -206,8 +206,6 @@ def Search_student():
          if actual in line.split():
             print(line)
             
-          
-            
 
 
 while True:
