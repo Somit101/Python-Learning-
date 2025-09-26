@@ -1,2 +1,0 @@
-Name: somit, Roll no.: 10, Class: 110, Marks: {'Mathematics': 85, 'Science': 85, 'English': 85}
-Name: Somit, Roll no.: 1, Class: 10, Marks: {'Mathematics': 85, 'Science': 85, 'English': 85}
