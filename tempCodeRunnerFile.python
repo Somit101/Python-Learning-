@@ -1,9 +1,0 @@
-# Storing frequency in dictionary (Lesser T.C.)
-mylist = [5,5,1,2,9,8,8,7,1,2,3,6,9,5,4,7,8]
-mydict = {}
-for i in range(0,len(mylist)):
-    mydict[mylist[i]] = mydict.get(mylist[i],0) + 1   # Here we check if a element is in mydict if not it gives 0+1 if yes it gives 1+1
-print(mydict)
-
-
-
