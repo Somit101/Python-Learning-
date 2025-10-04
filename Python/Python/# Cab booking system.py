@@ -1,7 +1,7 @@
 # Cab booking system
 
 class Details:
-    def __init__(self,name,age,phone_no,email,num_of_vehicle,vehicle_type,age_of_vehicle):
+    def __init__(self,name,age,phone_no,email,num_of_vehicle,vehicle_type,age_of_vehicle,status):
         self.name = name
         self.age = age
         self.phone_no = phone_no
@@ -9,6 +9,7 @@ class Details:
         self.num_of_vehicle = num_of_vehicle
         self.vehicle_type = vehicle_type
         self.age_of_vehicle = age_of_vehicle
+        self.status = status
 
     def __str__(self):
         return f"Name = {self.name}\nAge = {self.age}\nPhone = {self.phone}\nEmail = {self.email}"
@@ -17,10 +18,7 @@ class Driver:
     def __init__(self):
         self.drivers = []
 
-    def add(self,driver):
-        if self.drivers == []:
-            print("No driver exists")
-        else:    
+    def add(self,driver):    
            self.drivers.append(driver)    
 
     def remove(self,name,phone):
@@ -46,16 +44,14 @@ class Driver:
                 found = True      
         if not found:
             print("No driver with this phone number exists")
+        
 
 # I need to write the same things as i wrote in driver class make a function which can be used in both the classes so no duplication happens
 class Rider:
     def __init__(self):
         self.riders = []
 
-    def add(self,rider):
-        if self.riders == []:
-            print("No rider exists")
-        else:    
+    def add(self,rider):    
            self.riders.append(rider)   
 
     def remove(self,name,phone):
@@ -150,15 +146,15 @@ while True:
                     main()    
 
                 else:
-                    print("Envalid input")    
+                    print("Invalid input")    
 
 
         elif User_input == 2:
             driver()
             try:
-               User = int(input("Enter 1,2: "))
+               User = int(input("Enter 1,2,3: "))
             except:
-                print("Please inter valif inputs only")
+                print("Please enter valid inputs only")
             else:       
               if User == 1:
                     name = str(input("Enter your name: "))
@@ -169,13 +165,22 @@ while True:
                     vehicle_type = str(input("Enter type of vehicle: "))
                     age_of_vehicle = int(input("Enter age of vehicle: "))
 
-                    D.add(name,age,phone,email,vehicle_no,vehicle_type,age_of_vehicle)
+                    D.add((name,age,phone,email,vehicle_no,vehicle_type,age_of_vehicle))
 
-              elif User == 2:           ##########
-                  Status = str(input("Enter your status 'Available' or 'Not Available': "))
+              elif User == 2:           ########## Problem
+                  number = int(input("Enter your phone number: "))
+                  for i in D.drivers:
+                    if number == i.phone_no:
+                     Status = str(input("Enter your status 'Available' or 'Not Available': "))
+                     i.status = Status
+                    else:
+                      print("No driver with this number exists")   
 
               elif User == 3:
                   main()    
+
+              else:
+                  print("Please enter valid inputs")    
 
             # status 
         elif User_input == 3:
@@ -192,12 +197,12 @@ while True:
                     phone1 = int(input("Enter your phone number: "))
                     email1 = str(input("Enter your email: "))
 
-                    R.add(name1,age1,phone1,email1)
+                    R.add((name1,age1,phone1,email1))
 
                 elif user_input == 2:                        #########
                     drop = str(input("Enter drop location: "))
                     pick = str(input("Enter pick up location: "))    
-                    print(f"Driver will pick y;ou up from {pick} and drop you to {drop}")
+                    print(f"Driver will pick you up from {pick} and drop you to {drop}")
 
                 elif user_input == 3:
                     main()    

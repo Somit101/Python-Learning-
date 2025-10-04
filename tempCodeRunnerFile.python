@@ -1,0 +1,14 @@
+def main(n):
+    N = n-1
+    if N <1:
+        return
+    print(N*n)
+    main(N)
+main(5)    
+        
+
+
+       
+
+       
+      
